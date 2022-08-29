@@ -70,7 +70,7 @@ def get_city():
         myList = ['청주시','충주시','제천시','음성군']
       return render_template("ML_predict_Region.html", city = City, myList = myList)
 # 세대수
-@predict_bp.route('/Num_households',methods = ['POST', 'GET'])
+@predict_bp.route('/Num_households',methods = ['POST'])
 def get_households():
    if request.method == 'POST':
       global Region, City
@@ -78,7 +78,7 @@ def get_households():
       recent_Num_households = df[(df['City'] == City) & (df['Region'] == Region)].iloc[-1].Num_households
       return render_template("ML_predict_Num_households.html", City = City, Region = Region, recent_Num_households = recent_Num_households)
 #미분양
-@predict_bp.route('/Num_mibunyang',methods = ['POST', 'GET'])
+@predict_bp.route('/Num_mibunyang',methods = ['POST'])
 def get_mibunyang():
    if request.method == 'POST':
       global Num_households
@@ -87,7 +87,7 @@ def get_mibunyang():
       return render_template("ML_predict_Num_Mibunyang.html", City = City, Region = Region, Num_households = Num_households, 
       recent_Num_mibunyang = recent_Num_mibunyang)
 #거래량
-@predict_bp.route('/Num_trade',methods = ['POST', 'GET'])
+@predict_bp.route('/Num_trade',methods = ['POST'])
 def get_trade():
    if request.method == 'POST':
       global Num_mibunyang
@@ -96,7 +96,7 @@ def get_trade():
       return render_template("ML_predict_Num_trade.html",City = City, Region = Region, Num_households = Num_households, 
       Num_trade = Num_trade, recent_Num_trade = recent_Num_trade)
 #건축허가
-@predict_bp.route('/Num_permission',methods = ['POST', 'GET'])
+@predict_bp.route('/Num_permission',methods = ['POST'])
 def get_permission():
    if request.method == 'POST':
       global Num_trade
@@ -105,7 +105,7 @@ def get_permission():
       Num_mibunyang = Num_mibunyang, Num_trade = Num_trade)
 
 #결과 분석
-@predict_bp.route('/result', methods = ['POST', 'GET'])
+@predict_bp.route('/result', methods = ['POST'])
 def get_result():
    if request.method == 'POST':
       global Num_permission, City, Region, Num_households, Num_mibunyang, Num_trade
