@@ -1,0 +1,1 @@
+web: gunicorn --worker=1 'project_app:create_app()'
