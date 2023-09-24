@@ -14,7 +14,7 @@ import pickle
 df = pd.read_csv('../test_project.csv')
 # 간단한 EDA 진행
 df.drop(['Unnamed: 0'], axis='columns', inplace=True)
-# df['Date'] = pd.to_datetime(df['Date'])
+# df['Date'] = pd.to_datetime(df['Date'])?
 category_col = ['City', 'Region']
 df[category_col] = df[category_col].astype('category')
 

@@ -1,6 +1,7 @@
 from flask import Flask
-import pandas as pd
-
+from project_app.views.main_views import main_bp
+from project_app.views.ML_views import predict_bp
+from project_app.views.map_views import map_bp
 
 def create_app():
     app = Flask(__name__)
@@ -16,3 +17,4 @@ def create_app():
 if __name__ == "__main__":
   app = create_app()
   app.run()
+  
